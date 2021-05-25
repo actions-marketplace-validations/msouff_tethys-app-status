@@ -37,9 +37,6 @@ def status_check() -> str:
 
     data = json.loads(res.content)
 
-    if check_count == 0:
-        c_print(f'Install Start Time: {data["installStartTime"]}', blue_style)
-
     if not data['installComplete'] and check_count <= 12:  # first 4 minutes
         time.sleep(20)
         check_count += 1
