@@ -1,0 +1,23 @@
+# action.yml
+name: 'tethys-app-status'
+description: 'A GitHub Action to check the status of a Tethys app installation using the Warehouse app.'
+branding:
+  icon: 'activity'
+  color: 'green'
+inputs:
+  url:
+    description: 'The Warehouse app API endpoint. (e.g. https://tethys.com/apps/warehouse/install/git/status).'
+    required: true
+  install_id:
+    description: 'The installation ID from the Warehouse app. (e.g. 54f86041-54d2-4b33-9439-277e8229dc30).'
+    required: true
+  tethys_auth_token:
+    description: 'The authorization token for the tethys user from the portal where the app is being installed.'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.url }}
+    - ${{ inputs.install_id }}
+    - ${{ inputs.tethys_auth_token }}
