@@ -5,6 +5,7 @@ import os
 import time
 import json
 import requests
+from typing import Literal
 
 # colors
 end_style = '\033[0m'
@@ -22,8 +23,8 @@ auth_token = sys.argv[3]
 
 
 # print colors
-def c_print(msg, style) -> str:
-    return print(f'{style}{msg}{end_style}')
+def c_print(msg: str, style: Literal[red_style, green_style, orange_style, blue_style]) -> str:
+    print(f'{style}{msg}{end_style}')
 
 
 # call api a total of 10 times in the space of 10 minutes
